@@ -1,5 +1,5 @@
 # Swamp Services: Students Helping Students
-Students are faced with all sorts of challenges these days that impede their ability to learn. Some of these challenges include needing help with food, pets, finances, and mental health. We are building a community service website that allows students to volunteer some of their time to help other students who may be facing some of these challenges. The volunteer students would provide quick services like developing meal plans, learning to cook, walking pets, talking when troubled, and helping with resumes and job searches.
+There are many obstacles in the way of students' ability to learn. Among these difficulties are the need for assistance with housing, food, finances, and emotional health. We are developing a website for community service that will enable students to donate a portion of their time to assist other students who might be dealing with similar issues. The student volunteers would offer short-term assistance with meal planning, cooking lessons, walking pets, troubleshooting equipements, resume assistance, and job search assistance etc.
 
 ### Project Description
 

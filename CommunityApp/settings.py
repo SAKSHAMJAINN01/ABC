@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'CommunityApp.wsgi.application'
 #     'default': {
 #         'NAME': 'SwampServicesAppDB',
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'USER': 'postgres',
+#         'USER': 'postgre',
 #         'PASSWORD': 'admin123',
 #         # 'HOST': 'localhost',
 #     }

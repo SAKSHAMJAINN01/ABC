@@ -1,33 +1,16 @@
-# Swamp Services: Students Helping Students
-There are many obstacles in the way of students' ability to learn. Among these difficulties are the need for assistance with housing, food, finances, and emotional health. We are developing a website for community service that will enable students to donate a portion of their time to assist other students who might be dealing with similar issues. The student volunteers would offer short-term assistance with meal planning, cooking lessons, walking pets, troubleshooting equipements, resume assistance, and job search assistance etc.
-
 ### Project Description
+The Student Community Service project creates a versatile student volunteer web application that can be adopted by any university. It addresses the diverse struggles that college students commonly face, providing a centralized platform for students to earn service hours, engage in social activities, and contribute to their community while earning recognition points.
 
-Group 11's project was to create a student volunteer web application for the students of the University of Florida. Specifically, this project titled "Swamp Services" helps address the myriad of struggles that college students face during their college journey. The service was intended to be hosted by the University of Florida student government or other administrative organization as a way to provide a central place for students to earn service hours, engage in social activities, and help their community while earning gator points. By restricting account registration to only those who have a UF email, this service ensures safety and accountability for those who make use of it. This product differs from other service board websites like Craigslist by providing free help and a safer volunteer base.
+By allowing account registration for students with valid university email addresses, this service ensures safety and accountability. The product distinguishes itself from general service board websites by offering free, peer-to-peer assistance within a secure volunteer network.
 
 ### Challenge Statement and Solution
+Challenge
+College students, particularly first-year and first-generation students, often struggle with managing new challenges and environments across various universities. These difficulties can impede their learning experience and overall college journey.
 
-#### Challenge
-One common problem for college students, especially first year and first generation, is managing new challenges and environments. This can be stressful for many and harm their ability to learn and get the most out of their time at college. Some common challenges that college students might face include food insecurity, financial troubles, loneliness, time management, and dealing with illness/disability. 
+### Solution
+The Student Community Service platform facilitates peer support among college students. It enables students who have overcome similar challenges to share their experiences and provide assistance. The website allows students to earn volunteer hours by offering services such as meal planning, resume reviews, campus food bank assistance, and time management coaching.
 
-#### Solution
-To help mitigate this problem, group 11 has created a student volunteer community website centered around helping their peers. College students are best able to help because they may have gone through similar problems and be able to emphasize and lend their experience. To create a realistic scope for our project, group 11 focused on the University of Florida community and tailored our website accordingly. Students will be able to earn volunteer hours and help their community by providing quick services such as creating meal plans, looking over resumes, taking students to the campus food bank, and teaching time management skills.
-
-
-*NOTE* Please view the complete report in the main Github Repository [Project Report.pdf](https://github.com/zachj112/CEN3031-Project/blob/main/Project%20Report.pdf).
-
-### Added Branch Protection Rules
-
-<ins>Applies to 1 branch</ins>:  **main**
-
-- Require a pull request before merging
-    - Require approvals: 1
-    - Dismiss stale pull request approvals when new commits are pushed
-
-- Require status checks to pass before merging
-    - Require branches to be up to date before merging
-
-- Require conversation resolution before merging
+This solution is designed to be adaptable for implementation at any university, creating a scalable model for student-led community support in higher education institutions nationwide.
 
 
 ### Project setup and running

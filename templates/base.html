@@ -1,21 +1,52 @@
-<!-- HTML base, used in other html files -->
-{% include "header.html" %}
+{% load static %}
 
-{% block content %}
-<div class="container">
-<div class="row">
-    <div class="col-12">
-        {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ message }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Existing meta tags and title -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <!-- Dark Mode CSS -->
+    <link rel="stylesheet" href="{% static 'css/dark-mode.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% include "header.html" %}
+    
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% block content %}{% endblock %}
             </div>
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
-</div>
-
-{% endblock content %}
-
-{% include "footer.html" %}
+            <div class="col-md-4">
+                {% block sidebar %}{% endblock %}
+            </div>
+        </div>
+    </main>
+    
+    <!-- Dark Mode Toggle Button -->
+    <button id="dark-mode-toggle" class="btn btn-secondary">Toggle Dark Mode</button>
+    
+    <footer class="{% if dark_mode %}dark-mode{% endif %}">
+        {% include "footer.html" %}
+    </footer>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Dark Mode JavaScript -->
+    <script src="{% static 'js/dark-mode.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+<body class="{% if dark_mode %}dark-mode{% endif %}">
+</body>
+</html>

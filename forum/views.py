@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 # importing messages
 from django.db.models import F  # Import F expression
 from django.contrib import messages
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+import json
+from django.urls import reverse
 
 # Model Forms.
 from .forms import UserPostForm, AnswerForm #, answer
@@ -27,6 +31,7 @@ def home(request):
         'replies': '-answer_count',
         'postdate': '-date_created',
         'gatorpoints': '-gatorpnts',
+        
     }
 
     # Validate sorting option
@@ -41,13 +46,14 @@ def home(request):
     latest_blogs = BlogPost.objects.order_by('-timestamp')[0:3]
 
     latest_topics = UserPost.objects.order_by('-date_created')[0:3]
-    
+    dark_mode = request.session.get('dark_mode', False)
     context = {
         'user_posts':user_posts,
         'latest_blogs':latest_blogs,
         'latest_topics':latest_topics,
         'sort_by': sort_by,
         'ordering_options': ordering_options,
+        'dark_mode': dark_mode, 
     }
     return render(request, 'forum-main.html', context)
 
@@ -68,9 +74,15 @@ def userPost(request):
             return redirect('home')
     else:
         form = UserPostForm()
-
+    dark_mode = request.session.get('dark_mode', False)
     context = {'form':form}
     return render(request, 'user-post.html', context)
+@require_POST
+def update_dark_mode(request):
+    data = json.loads(request.body)
+    request.session['dark_mode'] = data.get('darkMode', False)
+    return JsonResponse({'status': 'success'})
+
 
 # function to create a reply to a post
 @login_required(login_url='login')
@@ -99,7 +111,7 @@ def postTopic(request, pk):
             return HttpResponseRedirect(post_topic.get_absolute_url())
     else:
         answer_form = AnswerForm()
-
+    dark_mode = request.session.get('dark_mode', False)
     context = {
         'topic':post_topic,
         'answers':answers,
@@ -107,6 +119,7 @@ def postTopic(request, pk):
         'is_moderator': request.user.author.is_moderator,  # Pass moderator status
         'post_is_open': post_topic.is_open,  # Pass post status
         'gatorpnts':gatorpnts,
+        'dark_mode': dark_mode, 
     }
 
     # Add accept_answer_url to the context for each answer
@@ -123,12 +136,13 @@ def userDashboard(request):
     ans_posted = request.user.answer_set.all()
     topic_count = topic_posted.count()
     ans_count = ans_posted.count()
-    
+    dark_mode = request.session.get('dark_mode', False)
     context = {
         'topic_posted':topic_posted,
         'ans_posted':ans_posted,
         'topic_count':topic_count,
-        'ans_count':ans_count
+        'ans_count':ans_count,
+        'dark_mode': dark_mode,
     }
     
     return render(request, 'user-dashboard.html', context)
@@ -148,11 +162,12 @@ def searchView(request):
         messages.error(request, f"Oops! Looks like you didn't put any keyword. Please try again.")
         return redirect('home')
 
-    
+    dark_mode = request.session.get('dark_mode', False)
     context = {
         'queryset':queryset,
         'search_query':search_query,
-        'q_count':q_count
+        'q_count':q_count,
+        'dark_mode': dark_mode,
     }
 
     return render(request, 'search-result.html', context)
@@ -164,10 +179,11 @@ def blogListView(request):
     all_posts = BlogPost.objects.all()
    
     all_leaders = Leaderboard.objects.all().order_by('-tot_gatorpnts')[:10]
-    
+    dark_mode = request.session.get('dark_mode', False)
     context = {
         'all_posts':all_posts,
         'all_leaders':all_leaders,
+        'dark_mode': dark_mode,
     }
     return render(request, 'blog-listing.html', context)
 
